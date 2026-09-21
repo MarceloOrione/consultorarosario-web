@@ -1,46 +1,255 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-AR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proyecto Orione</title>
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marcelo Orione | Automatización de procesos administrativos con IA para pymes</title>
+<meta name="description" content="Automatizo los procesos administrativos repetitivos de tu empresa, con IA y visión del negocio. Diagnóstico inicial sin costo.">
+<meta property="og:title" content="Marcelo Orione | Automatización de procesos administrativos con IA">
+<meta property="og:description" content="Automatización con IA y visión del negocio para pymes. Diagnóstico inicial sin costo.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://consultorarosario.com">
+<meta name="theme-color" content="#0F3D3A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-body{
-    margin:0;
-    font-family:Arial, Helvetica, sans-serif;
-    background:#0f172a;
-    color:white;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
+  :root {
+    --paper: #EFF4F2;
+    --ink: #13252B;
+    --ink-soft: #445A5F;
+    --rule: #B7C6C2;
+    --deep: #0F3D3A;
+    --deep-ink: #EAF3F1;
+    --mark: #E8B93C;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+    --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--mark); outline-offset: 3px; }
+  .wrap { width: min(1080px, 100% - 2.5rem); margin-inline: auto; }
 
-.container{
-    text-align:center;
-}
+  /* Encabezado */
+  header.top { padding: 1.25rem 0; background: var(--deep); color: var(--deep-ink); border-bottom: 1px solid rgba(255,255,255,.14); }
+  header.top .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .brand { display: flex; flex-direction: column; line-height: 1.3; }
+  .brand .tag { font-size: .9rem; color: #B9D2CE; }
+  .name { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; letter-spacing: .01em; text-decoration: none; }
+  .top a.mail { font-size: .95rem; color: #B9D2CE; text-decoration: none; border-bottom: 1px solid rgba(255,255,255,.3); }
+  .top a.mail:hover { color: #fff; border-color: #fff; }
 
-h1{
-    font-size:48px;
-}
+  /* Hero */
+  .hero-band { background: var(--deep); color: var(--deep-ink); }
+  .hero { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.3rem, 6.2vw, 4.4rem);
+    line-height: 1.06;
+    letter-spacing: -.015em;
+    margin: 0 0 1.5rem;
+    max-width: 20ch;
+  }
+  .hero p.lead { font-size: clamp(1.1rem, 2.2vw, 1.3rem); color: #B9D2CE; max-width: 46ch; margin: 0 0 2rem; }
+  .hero p.sectors { font-size: 1rem; font-weight: 500; color: var(--deep-ink); margin: 2rem 0 0; padding-left: .75rem; border-left: 3px solid var(--mark); max-width: 52ch; }
+  .actions { display: flex; gap: .875rem; flex-wrap: wrap; align-items: center; }
+  .btn {
+    display: inline-block; padding: .95rem 1.5rem; font: inherit; font-weight: 600; text-decoration: none;
+    border-radius: 4px; border: 2px solid var(--deep); transition: background .15s, color .15s;
+  }
+  .btn.primary { background: var(--deep); color: var(--deep-ink); }
+  .btn.primary:hover { background: #0A2B29; }
+  .btn.ghost { background: transparent; color: var(--deep); }
+  .btn.ghost:hover { background: var(--deep); color: var(--deep-ink); }
+  .note { margin: 1.25rem 0 0; font-size: .95rem; color: #B9D2CE; }
+  .hero-band .btn.primary { background: var(--mark); border-color: var(--mark); color: #1A1A12; }
+  .hero-band .btn.primary:hover { background: #F0C859; border-color: #F0C859; }
+  .hero-band .btn.ghost { border-color: var(--deep-ink); color: var(--deep-ink); }
+  .hero-band .btn.ghost:hover { background: var(--deep-ink); color: var(--deep); }
 
-p{
-    font-size:22px;
-}
+  /* Secciones */
+  section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.15; margin: 0 0 .75rem; letter-spacing: -.01em; }
+  .sub { color: var(--ink-soft); max-width: 58ch; margin: 0 0 2.25rem; }
+
+  /* Libro mayor: el elemento característico */
+  .ledger { border-top: 2px solid var(--deep); border-bottom: 2px solid var(--deep); background: #FFFFFF; }
+  .ledger table { width: 100%; border-collapse: collapse; }
+  .ledger caption { position: absolute; left: -9999px; }
+  .ledger th, .ledger td { text-align: left; vertical-align: top; padding: 1.1rem 1.25rem; border-bottom: 1px solid var(--rule); }
+  .ledger thead th { font-size: .9rem; color: var(--ink-soft); font-weight: 600; border-bottom: 2px solid var(--rule); }
+  .ledger tbody tr:last-child > * { border-bottom: 0; }
+  .ledger tbody th { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; width: 27%; border-right: 1px solid var(--rule); }
+  .ledger td.before { color: var(--ink-soft); width: 33%; border-right: 1px solid var(--rule); }
+  .ledger td.after { font-weight: 500; }
+
+  /* Método */
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; counter-reset: paso; }
+  .steps li { counter-increment: paso; border-top: 2px solid var(--deep); padding-top: 1rem; }
+  .steps li::before { content: "Paso " counter(paso); display: block; font-size: .9rem; color: var(--ink-soft); margin-bottom: .35rem; }
+  .steps h3 { font-family: var(--serif); font-weight: 600; font-size: 1.35rem; margin: 0 0 .5rem; }
+  .steps p { margin: 0; color: var(--ink-soft); }
+
+  /* Quién soy */
+  .about { display: grid; grid-template-columns: 1fr 1.6fr; gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
+  .about p { margin: 0 0 1rem; max-width: 60ch; }
+
+  /* Cierre */
+  .closing { background: var(--deep); color: var(--deep-ink); }
+  .closing h2 { max-width: 20ch; }
+  .closing p { color: #B9D2CE; max-width: 52ch; margin: 0 0 2rem; }
+  .closing .btn.primary { background: var(--mark); border-color: var(--mark); color: #1A1A12; }
+  .closing .btn.primary:hover { background: #F0C859; border-color: #F0C859; }
+  .closing .btn.ghost { border-color: var(--deep-ink); color: var(--deep-ink); }
+  .closing .btn.ghost:hover { background: var(--deep-ink); color: var(--deep); }
+
+  footer { padding: 1.75rem 0 2.25rem; font-size: .95rem; color: var(--ink-soft); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  footer a { text-decoration: none; border-bottom: 1px solid var(--rule); }
+
+  /* Móvil */
+  @media (max-width: 760px) {
+    .hero { padding: 2rem 0 2.25rem; }
+    .steps { grid-template-columns: 1fr; gap: 1.75rem; }
+    .about { grid-template-columns: 1fr; }
+    .ledger thead { position: absolute; left: -9999px; }
+    .ledger table, .ledger tbody, .ledger tr, .ledger th, .ledger td { display: block; width: auto !important; }
+    .ledger tr { padding: 1rem 1.1rem; border-bottom: 1px solid var(--rule); }
+    .ledger tbody tr:last-child { border-bottom: 0; }
+    .ledger th, .ledger td { border: 0 !important; padding: .2rem 0; }
+    .ledger td::before { display: block; font-size: .8rem; font-weight: 600; color: var(--ink-soft); margin-top: .5rem; }
+    .ledger td.before::before { content: "Hoy"; }
+    .ledger td.after::before { content: "Con automatización"; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .btn { transition: none; }
+  }
 </style>
-
 </head>
-
 <body>
 
-<div class="container">
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <a class="name" href="#">Marcelo Orione</a>
+      <span class="tag">Automatización de procesos administrativos con IA</span>
+    </div>
+    <a class="mail" href="mailto:marceloorione@consultorarosario.com">marceloorione@consultorarosario.com</a>
+  </div>
+</header>
 
-<h1>Proyecto Estudio Orione</h1>
+<main>
+  <div class="hero-band">
+  <div class="wrap hero">
+    <h1>Automatizo los procesos administrativos repetitivos.</h1>
+    <p class="lead">Para pymes: primero miro el proceso, con visión del negocio. Si conviene, lo automatizo con IA.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://wa.me/5493415323222?text=Hola%20Marcelo%2C%20quiero%20consultarte%20por%20un%20diagn%C3%B3stico%20de%20proceso." rel="noopener">Escribime por WhatsApp</a>
+    </div>
+    <p class="note">El primer diagnóstico es sin costo.</p>
+    <p class="sectors">Contador Público, con más de 20 años en procesos y sistemas empresariales. Expertise en agronegocios y finanzas.</p>
+  </div>
+  </div>
 
-<p>Mi primer sitio publicado con GitHub Pages 🚀</p>
+  <section id="que-automatizo">
+    <div class="wrap">
+      <h2>¿Tenés alguno de estos procesos?</h2>
+      <p class="sub">Si todos los meses alguien hace lo mismo con planillas, PDF, facturas o reportes, probablemente haya algo para revisar.</p>
+      <div class="ledger">
+        <table>
+          <caption>Tareas administrativas: cómo se hacen hoy y cómo quedan automatizadas</caption>
+          <thead>
+            <tr><th scope="col">Tarea</th><th scope="col">Hoy</th><th scope="col">Con automatización</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Conciliaciones y controles</th>
+              <td class="before">Alguien cruza planillas línea por línea.</td>
+              <td class="after">El cruce lo hace el sistema. La persona revisa solo las diferencias.</td>
+            </tr>
+            <tr>
+              <th scope="row">Carga de documentos</th>
+              <td class="before">Facturas, PDF y comprobantes tipeados a mano.</td>
+              <td class="after">Los documentos se leen y los datos quedan ordenados.</td>
+            </tr>
+            <tr>
+              <th scope="row">Reportes de gestión</th>
+              <td class="before">Alguien los arma a mano cada vez que se los piden.</td>
+              <td class="after">La información queda preparada para consultar y controlar, sin rearmarla.</td>
+            </tr>
+            <tr>
+              <th scope="row">Otro proceso</th>
+              <td class="before">Una tarea que se repite, lleva tiempo o depende de una sola persona.</td>
+              <td class="after">La analizamos y te digo si hay una oportunidad real de automatizarla.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-</div>
+  <section id="como-trabajo">
+    <div class="wrap">
+      <h2>Cómo trabajo</h2>
+      <p class="sub">Primero se mira el proceso. Recién después se decide si conviene automatizarlo.</p>
+      <ol class="steps">
+        <li>
+          <h3>Me contás el proceso</h3>
+          <p>Una reunión breve, sin costo. Me contás qué tarea se repite, lleva tiempo o depende de una persona.</p>
+        </li>
+        <li>
+          <h3>Lo analizo</h3>
+          <p>Mapeo el proceso con visión del negocio y te digo si conviene automatizarlo, qué se automatiza y qué no.</p>
+        </li>
+        <li>
+          <h3>Si conviene, lo construimos</h3>
+          <p>Antes de empezar, te paso el alcance y el presupuesto. Se automatiza, se prueba con datos reales y el resultado queda validado y documentado.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="quien-soy">
+    <div class="wrap about">
+      <h2>Quién soy</h2>
+      <div>
+        <p>Soy Marcelo Alejandro Orione, Contador Público, con más de 20 años en análisis funcional, procesos y sistemas empresariales.</p>
+        <p>Tengo expertise en agronegocios, un sector donde los procesos administrativos, financieros y de control pesan mucho en la operación.</p>
+        <p>Combino visión del negocio con mirada de sistemas. No vengo a venderte IA: miro un proceso de tu empresa y te digo si vale la pena automatizarlo.</p>
+        <p><a href="https://www.linkedin.com/in/marcelo-alejandro-orione-9bb6669" rel="noopener" target="_blank">Mi perfil en LinkedIn</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="contacto">
+    <div class="wrap">
+      <h2>Empecemos por un proceso concreto.</h2>
+      <p>Contame qué tarea administrativa se repite, lleva tiempo o depende demasiado de una persona. La analizamos en una reunión breve, sin costo, y te digo si veo una oportunidad real de automatización.</p>
+      <div class="actions">
+        <a class="btn primary" href="https://wa.me/5493415323222?text=Hola%20Marcelo%2C%20quiero%20consultarte%20por%20un%20diagn%C3%B3stico%20de%20proceso." rel="noopener">Escribime por WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Marcelo Alejandro Orione · Contador Público · Rosario, Santa Fe, Argentina</span>
+    <span><a href="tel:+5493415323222">+54 9 3415 323222</a> · <a href="mailto:marceloorione@consultorarosario.com">marceloorione@consultorarosario.com</a> · <a href="https://www.linkedin.com/in/marcelo-alejandro-orione-9bb6669" rel="noopener" target="_blank">LinkedIn</a></span>
+  </div>
+</footer>
 
 </body>
 </html>
